@@ -142,3 +142,45 @@ plt.clf()
 # plt.ylabel("occpation number <n>")
 # legend = plt.legend(loc='upper right', shadow=False, fontsize='x-small')
 # plt.savefig("test3.png")
+
+
+
+
+
+
+plt.figure(1)
+plt.subplot(211)
+plt.plot(converted_time_s, event_value, "g-")
+plt.title('Event overview')
+# plt.xlabel('Time')
+plt.ylabel('Event value')
+
+for i in cusum_points:
+        if i[1]<30000:
+            plt.annotate("C",xy=(i[0],26000),xytext=(i[0],39000),arrowprops=dict(arrowstyle="-|>"),horizontalalignment='center', verticalalignment='top',)
+        else:
+            plt.annotate("C",xy=(i[0],26000),xytext=(i[0]+timedelta(minutes=2600),39000),arrowprops=dict(arrowstyle="-|>"),horizontalalignment='center', verticalalignment='top',)
+for i in cusum_p_points:
+        if i[1]<30000:
+            plt.annotate("C+",xy=(i[0],26000),xytext=(i[0],39000),arrowprops=dict(arrowstyle="-|>"),horizontalalignment='center', verticalalignment='top',)
+        else:
+            plt.annotate("C+",xy=(i[0],26000),xytext=(i[0]+timedelta(minutes=2600),39000),arrowprops=dict(arrowstyle="-|>"),horizontalalignment='center', verticalalignment='top',)
+for i in cusum_n_points:
+        if i[1]<30000:
+            plt.annotate("C-",xy=(i[0],26000),xytext=(i[0],39000),arrowprops=dict(arrowstyle="-|>"),horizontalalignment='center', verticalalignment='top',)
+        else:
+            plt.annotate("C-",xy=(i[0],26000),xytext=(i[0]+timedelta(minutes=2600),39000),arrowprops=dict(arrowstyle="-|>"),horizontalalignment='center', verticalalignment='top',)
+
+plt.subplot(212)
+plt.plot(converted_time_s, s, "b-",label='S')
+plt.plot(converted_time_s, sp, "y-",label='SP')
+plt.plot(converted_time_s, sn, "r-",label='SN')
+plt.title('Cusum overview')
+plt.xlabel(Date after Start')
+plt.ylabel('Cusum value')
+legend = plt.legend(loc='upper left', shadow=True, fontsize='x-small')
+
+plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=None, hspace=0.3)
+
+
+plt.show()
