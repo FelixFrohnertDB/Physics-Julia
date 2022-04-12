@@ -1,5 +1,5 @@
 # physics
-In this repo different methods used in physics related projects of mine are presented.
+In this repo different methods used in physics related to different projects are presented.
 
 1. CUSUM: 
 
